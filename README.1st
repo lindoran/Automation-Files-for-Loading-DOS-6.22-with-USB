@@ -46,70 +46,64 @@ Whats the solution?
 
 DONT INSTALL DOS ON A THIN CLIENT! 
 
-but isn't that the whole point? What about all the B-Roll with functioning dos
-games on your thin clent? You are running windows 3.11 natively with no issues,
-and no mods?   THATS A USB stick how are you useing a USB stick, 2 usb sicks?
-is that EMULATION?  NO. It's not emulation.
-
-but you said DON'T install DOS on a thin client.
-
-YES.
-
-Ok, all kidding aside, to install DOS on a thin client:
+Instead install DOS on a virtual mechine and mygrate it to a Thin Client:
   
-  - you will need:
-    - these files from my GitHub.
-	- VirtualBOX
-	- UNetBootIn
-	- HxC Floppy Emulator Dos Disk Browser
-	- A thin client that works with USBASPI / ASPIDISK.
-	- I should probably tell you, you need a valid licence to use
-	  the below software:
-      - dos install disk images (I can't tell you were to get these!)
-	  - windows install disk images (These either!)
-    - A dos 6.22 boot disk image; not disk 1 of DOS.
-	- a Thumb Drive (maybe two if you want to chuck one in the secure
-	  USB port on your client for you know games and stuff)
+ - you will need:
+  - these files from my GitHub.
+  - VirtualBOX
+  - UNetBootIn
+  - HxC Floppy Emulator Dos Disk Browser
+ - A thin client that works with USBASPI / ASPIDISK.
+ - I should probably tell you, you need a valid licence to use
+   the below software which you also neeed:
+   - dos install disk images (I can't tell you were to get these!)
+   - windows install disk images (These either!)
+ - A dos 6.22 boot disk image; not disk 1 of DOS.
+ - a Thumb Drive (maybe two if you want to chuck one in the secure
+   USB port on your client for you know games and stuff)
 	  
-  - First we Install DOS and Windows on a virtual mechine.
-  - we mount a USB Drive we prepared to 2GB partition in DISKPART.
-     - enable USB and OHCI in Virtual Box
-	   - add your already mounted thrugh windows thumb drive (yellow +)
-	 - use the provided floppy image, copy the files to the root of 
-	   C: in virtual box and reboot.
-	 - sellect virtual mechine from the boot menu.
-  - we copy over DOS and Windows to the thumb drive. (XCOPY /S works well)
-  - We add a custom boot disk we make containing custom boot menu and 
-    drivers to the USB stick.
-	 - open a pre-existing boot disk image in HxC Floppy Emulator Disk 
-	   Browser.
-	 - copy over files from the boot disk directory, as well as XCOPY.EXE
-	   and FORMAT.EXE from the DOS install directory, we just made in the 
-	   last step. (you may also need HIMEM.SYS and EMM386.EXE if they are
-	   not on the disk already)
-     - note you may have to remove files to make room for these things.	 
-     - save / export as a .img file (use the dropdown)	 
-  - We remove all USB mass storage devices from the thin client except the
-    USB stick being used to boot and enable USB booting in the BIOS. 
-    (unless its not clear, you need to leave the internal drive installed,
-     thats where the DOS install is going)	 
-  - We use that boot disk to boot to dos on the client (selecting the menu item
-    to prepare the drive no usb)
-  - once in dos we can run the FreeDos FDISK, being carefull to select the 
-    correct drive option 5 (HINT your Drive will most likely be Disk 2)
-     - from here we can erase, create a primary partion and make it active.
-  - We reboot the system, and load back into prepare disk.
-  - We format /s the system drive. (HINT its usually C:, Even though it showed
-    up as D: in fdisk.
-  - We reboot (AGAIN) this time picking the option for installing files.
-  - Last XCOPY /s the root of your thumb drive to the root of your system
-    drive.  
-  - Don't forget to shut off usb boot and reformat your thumb drive to remove
-    the boot information.
-  - reboot the client with your formatted USB Drive, and a few files to test.
-  - you can delete the unetbootin files from c:=\ if they copyed over from 
-    when you moved the files.cc
-  - your client will now have full version of dos 6.22
+ - First we Install DOS and Windows on a virtual mechine.
+ - we mount a USB Drive we prepared to 2GB partition in DISKPART.
+ - enable USB and OHCI in Virtual Box
+ - add your already mounted thrugh windows thumb drive (yellow +)
+ - use the provided floppy image, copy the files to the root of 
+   C: in virtual box and reboot.
+ - sellect virtual mechine from the boot menu.
+ - we copy over DOS and Windows to the thumb drive. (XCOPY /S works well)
+ - We add a custom boot disk we make containing custom boot menu and 
+   drivers to the USB stick.
+ - open a pre-existing boot disk image in HxC Floppy Emulator Disk 
+   Browser.
+ - copy over files from the boot disk directory, as well as XCOPY.EXE
+   and FORMAT.EXE from the DOS install directory, we just made in the 
+   last step. (you may also need HIMEM.SYS and EMM386.EXE if they are
+   not on the disk already)
+ - note you may have to remove files to make room for these things.	 
+ - save / export as a .img file (use the dropdown)	 
+ - We remove all USB mass storage devices from the thin client except the
+   USB stick being used to boot and enable USB booting in the BIOS. 
+   (unless its not clear, you need to leave the internal drive installed,
+   thats where the DOS install is going)	 
+ - We use that boot disk to boot to dos on the client (selecting the menu item
+   to prepare the drive no usb)
+ - once in dos we can run the FreeDos FDISK, being carefull to select the 
+   correct drive option 5 (HINT your Drive will most likely be Disk 2)
+ - from here we can erase, create a primary partion and make it active.
+ - We reboot the system, and load back into prepare disk.
+ - We format /s the system drive. (HINT its usually C:, Even though it showed
+   up as D: in fdisk.
+ - We reboot (AGAIN) this time picking the option for installing files.
+ - Last XCOPY /s the root of your thumb drive to the root of your system
+   drive.  
+ 
+ - your client will now have a bootable full version of dos 6.22. 
+ 
+ - Don't forget to shut off usb boot and reformat your thumb drive to remove
+   the boot information.
+ - reboot the client with your formatted USB Drive, and a few files to test.
+ - you can delete the UNetBootIn files from c:=\ if they copyed over from 
+   when you moved the files.
+
 	
 That sounds like alot of work.
 
@@ -119,6 +113,26 @@ One final thought... Please don't use this to make a image with the system
 files included to distribute on the internet.  Also this is provided without
 warentee of quality or functionality use at your own risk.
 
+Troubleshooting Notes: 
+
+Some USB hosts do not work out of the box with these scripts.  You may need 
+to use a different switch with usbaspi.sys. there is a wonderfull document 
+explaing everything to do with panisonics ASPI layer for USB here:
+
+https://www.jumpjet.info/Application-Software/DOS/Hardware/3/USBASPI/About.txt
+
+There's other ASPIlayers out there besides; one by Novac (not DI1000DD.SYS
+which is their SCSI driver that assigns drive letters.) while it's fast
+it generally only sees 1 device at a time. some places you can find it 
+under usbaspi2.sys (though probably not the right file name).
+
+there's also a few other ASPI disk drivers besides ASPIDISK out there.  I 
+tried several. DI1000DD.SYS -- which works but gave me intermittent issues.
+also there's a full service (non-ASPI) method called DUSE.EXE. It did not 
+work for me at all; obviously your mileage will/may vary.
+
+ASPIDISK.SYS comes from adaptec's EZ-SCSI suite of tools and you can extract 
+it from doing a install process of those CD's.  there is some documentation
+out there about it but alot if it is burried in the install.
 
 
-	
