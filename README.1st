@@ -133,6 +133,21 @@ work for me at all; obviously your mileage will/may vary.
 
 ASPIDISK.SYS comes from adaptec's EZ-SCSI suite of tools and you can extract 
 it from doing a install process of those CD's.  there is some documentation
-out there about it but alot if it is burried in the install.
+out there about it but alot if it is burried in the install files.
+
+it can be found here: 
+https://winworldpc.com/product/adaptec-ez-scsi/5x
+
+the V4 of EZ-SCSI comes on floppy disk; I've never tired the version of
+ASPIDISK.SYS from that site for this particular setup; it may even be the same
+verson, which may be easeir to extract just that 1 file.
+
+Another note; adaptec's AFDISK dosn't work with USBDISK.SYS; as a matter of 
+fact it clobbers the BIOS section calls used by MOST FDISK tools.  If there 
+is one out ther that works i'd be really interested in it, especially if it 
+takes standard command line commands; with something like that you could write 
+a fully automated install. 
+
+
 
 
