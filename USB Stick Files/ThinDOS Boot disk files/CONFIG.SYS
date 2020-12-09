@@ -1,0 +1,36 @@
+[MENU]
+REM syntax: Name, Descritopn
+MENUITEM=FDISK, Prepare Disk (NO USB)
+MENUITEM=INSTALL, Boot W/ USB Support to install DOS 6.22
+MENUITEM=VM, Use this option to load USB support in your VM BOX
+
+[COMMON]
+DEVICE=A:\HIMEM.SYS
+DOS=HIGH,UMB
+
+[INSTALL]
+REM this loads everything needed copy from USB
+DEVICE=A:\EMM386.EXE RAM I=B000-B7FF
+REM if fails to detect your USB or hangs try removing /e
+REM you can set to /u /o as well.
+REM try reading https://www.jumpjet.info/Application-Software/DOS/Hardware/3/USBASPI/About.txt
+REM for more info.
+DEVICEHIGH=A:\USBASPI.SYS /e
+DEVICEHIGH=A:\ASPIDISK.SYS
+REM ASPIDISK can be downloaded as part of EZ-SCSI:
+REM https://winworldpc.com/product/adaptec-ez-scsi/5x
+
+[VM]
+REM you can set to /u or /o as well.
+REM try reading https://www.jumpjet.info/Application-Software/DOS/Hardware/3/USBASPI/About.txt
+REM for more info.
+DEVICEHIGH=C:\USBASPI.SYS 
+DEVICEHIGH=C:\ASPIDISK.SYS
+REM ASPIDISK can be downloaded as part of EZ-SCSI:
+REM https://winworldpc.com/product/adaptec-ez-scsi/5x
+
+[FDISK]
+REM this is only loaded when "FDISK" is selected
+REM We only want to load FDISK or Format That's It!
+REM the ASPI layer for dos causes all kinds of issues
+REM with bios calls; which are used for fdisk.

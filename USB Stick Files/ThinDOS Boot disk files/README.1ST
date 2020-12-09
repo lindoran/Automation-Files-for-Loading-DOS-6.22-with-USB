@@ -1,0 +1,10 @@
+you will need to add to your boot disk from dos:
+
+XCOPY.EXE
+FORMAT.EXE
+EMM386.EXE (IF MISSING)
+HIMEM.SYS (IF MISSING)
+
+OPTIONAL:
+MOUSE.EXE or SYS Drivers.
+MSDOS EDIT.EXE (to make system config changes.)

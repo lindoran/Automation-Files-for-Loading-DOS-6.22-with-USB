@@ -1,0 +1,2 @@
+@ECHO OFF
+PATH = C:\;C:\DOS

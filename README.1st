@@ -1,0 +1,124 @@
+THIN DOS:
+
+Do you want dos 6.22 on your thin client (like all of dos, not just what you 
+get from a boot disk)? this is for you.
+
+a set of files to help with doing just that.  This contains no microsoft provided
+files.  I've uploaded a guide for doing this with (mostly) just a thumb drive.
+as part of the 2020 #DOScember event.
+
+Things to keep in mind about DOS 6.22 on a thin client:
+
+DOS 6.22 has a hard limit for partitions of 2GB or smaller; as it supports the 
+old FAT16 (and fat12 for floppies).  This is not so large a limitation as you 
+can use a partition tool to format any mass media to a 2GB in size to make it 
+compatible.
+
+The Second issue is the instal media for dos 6.22 has a custom boot sector 
+(probably) or custom setup program that limits the setup.exe file on the first
+disk to only load from the mechine it booted from on its drive A.
+
+NO PROBLEM, just make a boot CD, put the files in the root of D: and set the CD
+to boot to A:  
+
+WRONG! 
+this does not work either! (well in tests I did ... and I did a TON.)
+
+what's more if you look on google you run into a sea of information that all
+points you back to the same place.... probably don't try this.
+
+Lets look at what we know:
+
+  - DOS 6.22 has a limit on file sizes of 2GB  (we can solve this with DISKPART)
+  - DOS 6.22 FDISK Does not Support setting active partitions for disks which 
+    are not the 1st disk. (this is a issue when booting with NetBootIn, we can
+    resolve this useing the FDISK utility from FreeDOS.)
+  - DOS Installer requires the main install media to be a Floppy disk, in a 
+    an actual floppy drive... (alot of thin clients really don't have legacy  
+    floppy disk support, like they may boot from a floppy but its as a mass
+    storage device or as a native USB bootable device ... not a floppy drive. 
+    may even map the floppy drive to drive A: but DOS has issues with USB.)
+
+    .... the above is the most frusterating to deal with but we can even deal
+    with that.
+	
+Whats the solution?
+
+DONT INSTALL DOS ON A THIN CLIENT! 
+
+but isn't that the whole point? What about all the B-Roll with functioning dos
+games on your thin clent? You are running windows 3.11 natively with no issues,
+and no mods?   THATS A USB stick how are you useing a USB stick, 2 usb sicks?
+is that EMULATION?  NO. It's not emulation.
+
+but you said DON'T install DOS on a thin client.
+
+YES.
+
+Ok, all kidding aside, to install DOS on a thin client:
+  
+  - you will need:
+    - these files from my GitHub.
+	- VirtualBOX
+	- UNetBootIn
+	- HxC Floppy Emulator Dos Disk Browser
+	- A thin client that works with USBASPI / ASPIDISK.
+	- I should probably tell you, you need a valid licence to use
+	  the below software:
+      - dos install disk images (I can't tell you were to get these!)
+	  - windows install disk images (These either!)
+    - A dos 6.22 boot disk image; not disk 1 of DOS.
+	- a Thumb Drive (maybe two if you want to chuck one in the secure
+	  USB port on your client for you know games and stuff)
+	  
+  - First we Install DOS and Windows on a virtual mechine.
+  - we mount a USB Drive we prepared to 2GB partition in DISKPART.
+     - enable USB and OHCI in Virtual Box
+	   - add your already mounted thrugh windows thumb drive (yellow +)
+	 - use the provided floppy image, copy the files to the root of 
+	   C: in virtual box and reboot.
+	 - sellect virtual mechine from the boot menu.
+  - we copy over DOS and Windows to the thumb drive. (XCOPY /S works well)
+  - We add a custom boot disk we make containing custom boot menu and 
+    drivers to the USB stick.
+	 - open a pre-existing boot disk image in HxC Floppy Emulator Disk 
+	   Browser.
+	 - copy over files from the boot disk directory, as well as XCOPY.EXE
+	   and FORMAT.EXE from the DOS install directory, we just made in the 
+	   last step. (you may also need HIMEM.SYS and EMM386.EXE if they are
+	   not on the disk already)
+     - note you may have to remove files to make room for these things.	 
+     - save / export as a .img file (use the dropdown)	 
+  - We remove all USB mass storage devices from the thin client except the
+    USB stick being used to boot and enable USB booting in the BIOS. 
+    (unless its not clear, you need to leave the internal drive installed,
+     thats where the DOS install is going)	 
+  - We use that boot disk to boot to dos on the client (selecting the menu item
+    to prepare the drive no usb)
+  - once in dos we can run the FreeDos FDISK, being carefull to select the 
+    correct drive option 5 (HINT your Drive will most likely be Disk 2)
+     - from here we can erase, create a primary partion and make it active.
+  - We reboot the system, and load back into prepare disk.
+  - We format /s the system drive. (HINT its usually C:, Even though it showed
+    up as D: in fdisk.
+  - We reboot (AGAIN) this time picking the option for installing files.
+  - Last XCOPY /s the root of your thumb drive to the root of your system
+    drive.  
+  - Don't forget to shut off usb boot and reformat your thumb drive to remove
+    the boot information.
+  - reboot the client with your formatted USB Drive, and a few files to test.
+  - you can delete the unetbootin files from c:=\ if they copyed over from 
+    when you moved the files.cc
+  - your client will now have full version of dos 6.22
+	
+That sounds like alot of work.
+
+yeah, it was your welcome. :)
+
+One final thought... Please don't use this to make a image with the system 
+files included to distribute on the internet.  Also this is provided without
+warentee of quality or functionality use at your own risk.
+
+
+
+	

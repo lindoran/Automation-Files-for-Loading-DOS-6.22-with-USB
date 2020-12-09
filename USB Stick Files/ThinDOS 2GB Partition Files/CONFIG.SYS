@@ -1,0 +1,15 @@
+DEVICE=C:\DOS\HIMEM.SYS
+DOS=HIGH,UMB
+DEVICE=C:\DOS\EMM386.EXE RAM I=B000-B7FF
+DEVICEHIGH=C:\USBASPI.SYS /e
+REM if fails to detect your USB or hangs try removing /e
+REM you can set to /u /o as well.
+REM try reading https://www.jumpjet.info/Application-Software/DOS/Hardware/3/USBASPI/About.txt
+REM for more info.
+REM on some thin clients; you may loose keyboard support in windows 3.11 install disks.
+REM if thats you try copying the files to the main partition on the clent and install them 
+REM with usb support disabled. after install should work fine.
+
+DEVICEHIGH=C:\ASPIDISK.SYS
+REM ASPIDISK can be downloaded as part of EZ-SCSI:
+REM https://winworldpc.com/product/adaptec-ez-scsi/5x
