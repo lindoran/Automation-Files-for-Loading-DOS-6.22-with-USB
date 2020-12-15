@@ -46,7 +46,7 @@ Whats the solution?
 
 DONT INSTALL DOS ON A THIN CLIENT! 
 
-Instead install DOS on a virtual mechine and mygrate it to a Thin Client:
+Instead install DOS on a virtual mechine and migrate it to a Thin Client:
   
  - you will need:
   - these files from my GitHub.
@@ -148,6 +148,15 @@ is one out ther that works i'd be really interested in it, especially if it
 takes standard command line commands; with something like that you could write 
 a fully automated install. 
 
+A good forum post about cutemouse cutemouse driver, its in germen but a 
+google translate helped me to find out that V 1.9 of cutemose is the most
+stable.  It's the version that I use and it works along side the mouse 
+drivers for windows 3.11.
+
+https://www.dosforum.de/viewtopic.php?t=8916
+
+here is the link to cutemouse
+http://cutemouse.sourceforge.net/
 
 
 
